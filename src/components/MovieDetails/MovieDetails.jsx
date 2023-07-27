@@ -21,11 +21,8 @@ export const MovieDetails = () => {
       const response = await axios.get(
         `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`
       );
-      console.log(response.data);
       setMovie(response.data);
-      console.log(movie);
     } catch (error) {
-      console.error(error);
       alert(
         'Something went wrong while getting movie details. Please reload the page.'
       );

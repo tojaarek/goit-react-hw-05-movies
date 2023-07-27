@@ -8,6 +8,7 @@ export const Container = styled.div`
 
 export const Poster = styled.img`
   border-radius: 4px;
+  margin-bottom: 25px;
 `;
 
 export const Details = styled.div`

@@ -13,7 +13,6 @@ export const TrendingMovies = () => {
       );
       setTrendingMovies(response.data.results);
     } catch (error) {
-      console.error(error);
       alert(
         'Something went wrong while getting trending movies. Please reload the page.'
       );
