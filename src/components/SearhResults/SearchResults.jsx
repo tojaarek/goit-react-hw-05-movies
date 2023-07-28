@@ -23,7 +23,7 @@ const SearchResults = ({ movieName }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieName]);
 
-  return <div>{/* Wyświetl wyniki wyszukiwania */}</div>;
+  return <div>Lalala</div>;
 };
 
 export default SearchResults;
