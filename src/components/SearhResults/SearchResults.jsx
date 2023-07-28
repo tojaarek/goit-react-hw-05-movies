@@ -4,15 +4,10 @@ import { useState, useEffect } from 'react';
 const SearchResults = ({ movieName }) => {
   const [searchedMovie, setSearchedMovie] = useState([]);
 
-  useEffect(() => {
-    getMovies();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchedMovie]);
-
-  const getMovies = () => {
+  const getMovies = async () => {
     try {
       const apiKey = '40f1e2fc01a3359e74179736ebf3e1b9';
-      const response = axios.get(
+      const response = await axios.get(
         `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${movieName}`
       );
       setSearchedMovie(response.data.results);
@@ -22,6 +17,10 @@ const SearchResults = ({ movieName }) => {
       );
     }
   };
+
+  useEffect(() => {
+    getMovies();
+  }, [movieName]);
 
   return <div>{/* Wyświetl wyniki wyszukiwania */}</div>;
 };
