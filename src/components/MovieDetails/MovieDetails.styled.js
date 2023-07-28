@@ -11,6 +11,11 @@ export const Poster = styled.img`
   margin-bottom: 25px;
 `;
 
+export const PlaceholderImage = styled.img`
+  border-radius: 4px;
+  margin-bottom: 25px;
+`;
+
 export const Details = styled.div`
   border-radius: 4px;
   margin-left: 25px;

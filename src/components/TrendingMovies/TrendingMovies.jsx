@@ -30,7 +30,7 @@ export const TrendingMovies = () => {
         {trendingMovies &&
           trendingMovies.map(movie => (
             <TrendingItem key={movie.id}>
-              <TrendingLink to={`/movies/${movie.id}`}>
+              <TrendingLink to={`movies/${movie.id}`}>
                 {movie.title}
               </TrendingLink>
             </TrendingItem>

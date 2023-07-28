@@ -8,6 +8,7 @@ import {
   Poster,
   Title,
   Score,
+  PlaceholderImage,
 } from './MovieDetails.styled';
 import axios from 'axios';
 
@@ -46,10 +47,14 @@ export const MovieDetails = () => {
 
   return (
     <Container>
-      <Poster
-        src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-        alt="Movie poster"
-      ></Poster>
+      {movie.poster_path ? (
+        <Poster
+          src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+          alt="Movie poster"
+        />
+      ) : (
+        <PlaceholderImage src="https://via.placeholder.com/300x450" />
+      )}
       <Details>
         <Title>
           {movie.original_title} {date}
