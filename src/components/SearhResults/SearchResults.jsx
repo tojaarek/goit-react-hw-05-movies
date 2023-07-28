@@ -20,6 +20,7 @@ const SearchResults = ({ movieName }) => {
 
   useEffect(() => {
     getMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieName]);
 
   return <div>{/* Wyświetl wyniki wyszukiwania */}</div>;
