@@ -11,8 +11,12 @@ export const MovieInfo = () => {
     <Main>
       <Button />
       <MovieDetails />
-      <Link to={`movies/${movieId}/cast`}>Show cast</Link>
-      <Link to={`movies/${movieId}/reviews`}>Show reviews</Link>
+      <Link to={`/goit-react-hw-05-movies/movies/${movieId}/cast`}>
+        Show cast
+      </Link>
+      <Link to={`/goit-react-hw-05-movies/movies/${movieId}/reviews`}>
+        Show reviews
+      </Link>
       <Suspense fallback={<div>Loading page ...</div>}>
         <Outlet />
       </Suspense>
