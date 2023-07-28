@@ -28,7 +28,9 @@ const SearchResults = ({ movieName }) => {
         );
       }
     };
-    getMovies();
+    if (movieName) {
+      getMovies();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieName]);
 
