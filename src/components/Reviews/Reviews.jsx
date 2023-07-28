@@ -32,15 +32,34 @@ const Reviews = () => {
   }, [movieId]);
 
   return (
-    <List>
-      {reviews &&
-        reviews.map(review => (
-          <Item key={review.id}>
-            <Author>Author: {review.author}</Author>
-            <Content>{review.content}</Content>
+    <div>
+      {reviews && reviews.length > 0 ? (
+        <List>
+          {reviews.map(review => (
+            <Item key={review.id}>
+              <Author>Author: {review.author}</Author>
+              <Content>{review.content}</Content>
+            </Item>
+          ))}
+        </List>
+      ) : (
+        <List>
+          <Item>
+            <Author>There's no reviews yet.</Author>
           </Item>
-        ))}
-    </List>
+        </List>
+      )}
+
+      <List>
+        {reviews &&
+          reviews.map(review => (
+            <Item key={review.id}>
+              <Author>Author: {review.author}</Author>
+              <Content>{review.content}</Content>
+            </Item>
+          ))}
+      </List>
+    </div>
   );
 };
 

@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { Image, Item, List, Name, Year, Link } from './SearchResults.styled';
+import { PlaceholderImage } from './SearchResults.styled';
 
 const SearchResults = ({ movieName }) => {
-  const [searchedMovie, setSearchedMovie] = useState([]);
+  const [searchedMovie, setSearchedMovie] = useState('');
 
   useEffect(() => {
     const getMovies = async () => {
@@ -12,6 +14,8 @@ const SearchResults = ({ movieName }) => {
           `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${movieName}`
         );
         setSearchedMovie(response.data.results);
+        console.log(response.data.results, 'response');
+        console.log(searchedMovie, 'state');
       } catch (error) {
         alert(
           'Something went wrong while getting trending movies. Please reload the page.'
@@ -19,9 +23,32 @@ const SearchResults = ({ movieName }) => {
       }
     };
     getMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieName]);
 
-  return <div>Lalala</div>;
+  const date = searchedMovie.release_date;
+  console.log(date);
+
+  return (
+    <List>
+      {searchedMovie &&
+        searchedMovie.map(movie => (
+          <Item key={movie.id}>
+            {movie.poster_path ? (
+              <Image
+                src={`https://www.themoviedb.org/t/p/w300${movie.poster_path}`}
+                alt={`${movie.original_title} poster`}
+              />
+            ) : (
+              <PlaceholderImage src="https://via.placeholder.com/100x150" />
+            )}
+            <Name>{movie.original_title}</Name>
+            <Year>({movie.release_date.substring(0, 4)})</Year>
+            <Link to={`/movies/${movie.id}`}>Details</Link>
+          </Item>
+        ))}
+    </List>
+  );
 };
 
 export default SearchResults;

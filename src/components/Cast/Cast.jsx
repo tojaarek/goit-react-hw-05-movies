@@ -40,6 +40,7 @@ const Cast = () => {
             {actor.profile_path ? (
               <Image
                 src={`https://www.themoviedb.org/t/p/w300${actor.profile_path}`}
+                alt={`Portrait photo of ${actor.original_name}`}
               />
             ) : (
               <PlaceholderImage src={placeholder} />
