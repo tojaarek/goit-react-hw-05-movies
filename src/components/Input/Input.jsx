@@ -1,14 +1,16 @@
+import { Field, Button } from './Input.styled';
+
 const Input = ({ inputValue, onSubmit }) => {
   return (
     <form>
-      <input
+      <Field
         type="text"
         name="query"
         value={inputValue}
         onSubmit={event => onSubmit(event.target.value)}
         placeholder="Search movies"
       />
-      <button type="submit">Search</button>
+      <Button type="submit">Search</Button>
     </form>
   );
 };
