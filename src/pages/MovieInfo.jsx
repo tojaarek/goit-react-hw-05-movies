@@ -13,8 +13,18 @@ export const MovieInfo = () => {
     <Main>
       <Button to={location.state.from} />
       <MovieDetails />
-      <Link to={`/movies/${movieId}/cast`}>Show cast</Link>
-      <Link to={`/movies/${movieId}/reviews`}>Show reviews</Link>
+      <Link
+        to={`/movies/${movieId}/cast`}
+        state={{ from: `/movies/${movieId}` }}
+      >
+        Show cast
+      </Link>
+      <Link
+        to={`/movies/${movieId}/reviews`}
+        state={{ from: `/movies/${movieId}` }}
+      >
+        Show reviews
+      </Link>
       <Suspense fallback={<div>Loading page ...</div>}>
         <Outlet />
       </Suspense>
