@@ -36,7 +36,7 @@ const SearchResults = ({ movieName }) => {
 
   return (
     <List>
-      {searchedMovie.length > 0 ? (
+      {movieName && searchedMovie.length > 0 ? (
         searchedMovie.map(movie => (
           <Item key={movie.id}>
             {movie.poster_path ? (
@@ -55,7 +55,7 @@ const SearchResults = ({ movieName }) => {
           </Item>
         ))
       ) : (
-        <Error>No results found for "{movieName}"</Error>
+        <Error>{movieName ? `No results found for "${movieName}"` : ''}</Error>
       )}
     </List>
   );
