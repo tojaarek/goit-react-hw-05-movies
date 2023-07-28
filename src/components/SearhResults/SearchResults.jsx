@@ -1,6 +1,14 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { Image, Item, List, Name, Year, Link } from './SearchResults.styled';
+import {
+  Image,
+  Item,
+  List,
+  Name,
+  Year,
+  Link,
+  Error,
+} from './SearchResults.styled';
 import { PlaceholderImage } from './SearchResults.styled';
 
 const SearchResults = ({ movieName }) => {
@@ -26,7 +34,7 @@ const SearchResults = ({ movieName }) => {
 
   return (
     <List>
-      {searchedMovie &&
+      {searchedMovie.length > 0 ? (
         searchedMovie.map(movie => (
           <Item key={movie.id}>
             {movie.poster_path ? (
@@ -39,11 +47,14 @@ const SearchResults = ({ movieName }) => {
             )}
             <Name>{movie.original_title}</Name>
             <Year>({movie.release_date.substring(0, 4)})</Year>
-            <Link to={`/goit-react-hw-05-movies/movies/${movie.id}`}>
+            <Link to={`/movies/${movie.id}`} state={{ from: '/movies' }}>
               Details
             </Link>
           </Item>
-        ))}
+        ))
+      ) : (
+        <Error>No results found for "{movieName}"</Error>
+      )}
     </List>
   );
 };

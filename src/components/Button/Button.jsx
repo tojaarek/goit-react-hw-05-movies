@@ -1,7 +1,10 @@
 import { Link } from './Button.styled';
+import { useLocation } from 'react-router-dom';
 
 const Button = () => {
-  return <Link to="/goit-react-hw-05-movies">Go back</Link>;
+  const location = useLocation();
+
+  return <Link to={location.state.from}>Go back</Link>;
 };
 
 export default Button;

@@ -5,26 +5,19 @@ import { Navigation } from './Navigation/Navigation';
 import { MovieInfo } from 'pages/MovieInfo';
 import Cast from './Cast/Cast';
 import Reviews from './Reviews/Reviews';
+import Error from 'pages/Error';
 
 export const App = () => {
   return (
     <Routes>
-      <Route path="/goit-react-hw-05-movies" element={<Navigation />}>
+      <Route path="/" element={<Navigation />}>
         <Route index element={<Home />} />
-        <Route path="/goit-react-hw-05-movies/movies" element={<Movies />} />
-        <Route
-          path="/goit-react-hw-05-movies/movies/:movieId"
-          element={<MovieInfo />}
-        >
-          <Route
-            path="/goit-react-hw-05-movies/movies/:movieId/cast"
-            element={<Cast />}
-          />
-          <Route
-            path="/goit-react-hw-05-movies/movies/:movieId/reviews"
-            element={<Reviews />}
-          />
+        <Route path="/movies/:movieId" element={<MovieInfo />}>
+          <Route path="/movies/:movieId/cast" element={<Cast />} />
+          <Route path="/movies/:movieId/reviews" element={<Reviews />} />
         </Route>
+        <Route path="/movies" element={<Movies />} />
+        <Route path="*" element={<Error />} />
       </Route>
     </Routes>
   );

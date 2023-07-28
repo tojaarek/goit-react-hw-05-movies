@@ -58,3 +58,11 @@ export const Link = styled(NavLink)`
     background-color: #ba704f;
   }
 `;
+
+export const Error = styled.p`
+  font-weight: 500;
+  text-align: start;
+  position: absolute;
+  top: 120px;
+  left: 25px;
+`;
