@@ -7,30 +7,29 @@ const Reviews = () => {
   const [reviews, setReviews] = useState('');
   const { movieId } = useParams();
 
-  const getMovieReviews = async () => {
-    try {
-      const apiKey = '40f1e2fc01a3359e74179736ebf3e1b9';
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${apiKey}`
-      );
-      setReviews(response.data.results);
-      console.log(response.data.results);
-    } catch (error) {
-      console.error(error);
-      alert(
-        'Something went wrong while getting movie reviews. Please reload the page.'
-      );
-    }
-  };
-
   useEffect(() => {
+    const getMovieReviews = async () => {
+      try {
+        const apiKey = '40f1e2fc01a3359e74179736ebf3e1b9';
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${apiKey}`
+        );
+        setReviews(response.data.results);
+        console.log(response.data.results);
+      } catch (error) {
+        console.error(error);
+        alert(
+          'Something went wrong while getting movie reviews. Please reload the page.'
+        );
+      }
+    };
+
     getMovieReviews();
 
     return () => {
       setReviews([]);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [movieId]);
 
   return (
     <List>

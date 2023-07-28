@@ -8,30 +8,29 @@ const Cast = () => {
   const [cast, setCast] = useState([]);
   const { movieId } = useParams();
 
-  const getMovieCast = async () => {
-    try {
-      const apiKey = '40f1e2fc01a3359e74179736ebf3e1b9';
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`
-      );
-      setCast(response.data.cast);
-      console.log(cast);
-    } catch (error) {
-      console.error(error);
-      alert(
-        'Something went wrong while getting movie cast. Please reload the page.'
-      );
-    }
-  };
-
   useEffect(() => {
+    const getMovieCast = async () => {
+      try {
+        const apiKey = '40f1e2fc01a3359e74179736ebf3e1b9';
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`
+        );
+        setCast(response.data.cast);
+        console.log(cast);
+      } catch (error) {
+        console.error(error);
+        alert(
+          'Something went wrong while getting movie cast. Please reload the page.'
+        );
+      }
+    };
     getMovieCast();
 
     return () => {
       setCast([]);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [movieId]);
 
   return (
     <List>

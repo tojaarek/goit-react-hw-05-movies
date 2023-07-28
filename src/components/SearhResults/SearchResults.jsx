@@ -4,23 +4,21 @@ import { useState, useEffect } from 'react';
 const SearchResults = ({ movieName }) => {
   const [searchedMovie, setSearchedMovie] = useState([]);
 
-  const getMovies = async () => {
-    try {
-      const apiKey = '40f1e2fc01a3359e74179736ebf3e1b9';
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${movieName}`
-      );
-      setSearchedMovie(response.data.results);
-    } catch (error) {
-      alert(
-        'Something went wrong while getting trending movies. Please reload the page.'
-      );
-    }
-  };
-
   useEffect(() => {
+    const getMovies = async () => {
+      try {
+        const apiKey = '40f1e2fc01a3359e74179736ebf3e1b9';
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${movieName}`
+        );
+        setSearchedMovie(response.data.results);
+      } catch (error) {
+        alert(
+          'Something went wrong while getting trending movies. Please reload the page.'
+        );
+      }
+    };
     getMovies();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieName]);
 
   return <div>Lalala</div>;
