@@ -15,6 +15,15 @@ export const MovieDetails = () => {
   const [movie, setMovie] = useState('');
   const { movieId } = useParams();
 
+  useEffect(() => {
+    getMovieDetails();
+
+    return () => {
+      setMovie('');
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const getMovieDetails = async () => {
     try {
       const apiKey = '40f1e2fc01a3359e74179736ebf3e1b9';
@@ -28,15 +37,6 @@ export const MovieDetails = () => {
       );
     }
   };
-
-  useEffect(() => {
-    getMovieDetails();
-
-    return () => {
-      setMovie('');
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const date = movie.release_date ? movie.release_date.substring(0, 4) : '';
   const score = movie.vote_average

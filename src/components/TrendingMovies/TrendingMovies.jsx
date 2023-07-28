@@ -5,6 +5,10 @@ import axios from 'axios';
 export const TrendingMovies = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
 
+  useEffect(() => {
+    getTrendingMovies();
+  }, []);
+
   const getTrendingMovies = async () => {
     try {
       const apiKey = '40f1e2fc01a3359e74179736ebf3e1b9';
@@ -13,15 +17,12 @@ export const TrendingMovies = () => {
       );
       setTrendingMovies(response.data.results);
     } catch (error) {
+      console.error(error);
       alert(
         'Something went wrong while getting trending movies. Please reload the page.'
       );
     }
   };
-
-  useEffect(() => {
-    getTrendingMovies();
-  }, []);
 
   return (
     <div>
