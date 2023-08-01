@@ -1,10 +1,10 @@
-import { Link } from './Button.styled';
-import { useLocation } from 'react-router-dom';
+import { ButtonBack } from './Button.styled';
+import { useNavigate } from 'react-router-dom';
 
 const Button = () => {
-  const location = useLocation();
+  const navigate = useNavigate();
 
-  return <Link to={location.state.from}>Go back</Link>;
+  return <ButtonBack onClick={() => navigate(-1)}>Go back</ButtonBack>;
 };
 
 export default Button;

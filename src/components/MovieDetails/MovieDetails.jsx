@@ -38,9 +38,6 @@ export const MovieDetails = () => {
   }, [movieId]);
 
   const date = movie.release_date ? movie.release_date.substring(0, 4) : '';
-  const score = movie.vote_average
-    ? parseFloat(movie.vote_average.toFixed(1))
-    : '';
   const genres = movie.genres
     ? movie.genres.map(genre => genre.name).join(', ')
     : '';
@@ -59,7 +56,7 @@ export const MovieDetails = () => {
         <Title>
           {movie.original_title} {date}
         </Title>
-        <Score>User score: {score}</Score>
+        <Score>User score: {Math.trunc(movie.vote_average * 10)}%</Score>
         <Headline>Overview</Headline>
         <Info>{movie.overview}</Info>
         <Headline>Genres</Headline>
