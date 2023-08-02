@@ -3,10 +3,10 @@ import { Navigation } from './Navigation/Navigation';
 import Cast from './Cast/Cast';
 import Reviews from './Reviews/Reviews';
 import { lazy } from 'react';
+import { MovieInfo } from 'pages/MovieInfo';
 
 const Home = lazy(() => import('pages/Home'));
 const Movies = lazy(() => import('pages/Movies'));
-const MovieInfo = lazy(() => import('pages/MovieInfo'));
 const Error = lazy(() => import('pages/Error'));
 
 export const App = () => {
