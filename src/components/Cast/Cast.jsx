@@ -16,7 +16,6 @@ const Cast = () => {
           `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`
         );
         setCast(response.data.cast);
-        console.log(cast);
       } catch (error) {
         console.error(error);
         alert(

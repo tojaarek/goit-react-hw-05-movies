@@ -9,7 +9,6 @@ export const TrendingMovies = () => {
     const getTrendingMovies = async () => {
       try {
         const apiKey = '40f1e2fc01a3359e74179736ebf3e1b9';
-        console.log('Sending API request...');
         const response = await axios.get(
           `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`
         );
