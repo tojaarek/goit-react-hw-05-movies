@@ -1,4 +1,5 @@
 import { Field, Button } from './Input.styled';
+import PropTypes from 'prop-types';
 
 const Input = ({ inputValue, onSubmit }) => {
   return (
@@ -13,6 +14,11 @@ const Input = ({ inputValue, onSubmit }) => {
       <Button type="submit">Search</Button>
     </form>
   );
+};
+
+Input.propTypes = {
+  inputValue: PropTypes.string,
+  onSubmit: PropTypes.func,
 };
 
 export default Input;

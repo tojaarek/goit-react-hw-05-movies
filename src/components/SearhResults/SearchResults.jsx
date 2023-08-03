@@ -10,6 +10,7 @@ import {
   Error,
 } from './SearchResults.styled';
 import { PlaceholderImage } from './SearchResults.styled';
+import PropTypes from 'prop-types';
 
 const SearchResults = ({ movieName }) => {
   const [searchedMovie, setSearchedMovie] = useState('');
@@ -59,6 +60,10 @@ const SearchResults = ({ movieName }) => {
       )}
     </List>
   );
+};
+
+SearchResults.propTypes = {
+  movieName: PropTypes.string.isRequired,
 };
 
 export default SearchResults;
